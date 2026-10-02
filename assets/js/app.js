@@ -625,17 +625,30 @@
     var top = $('[data-totop]');
     var hero = $('#hero');
 
+    /* keep the back-to-top button clear of the sticky bar, whatever its height */
+    function measureBar() {
+      if (!bar) return;
+      document.documentElement.style.setProperty('--stickybar-h', bar.offsetHeight + 'px');
+    }
+    measureBar();
+    var mt;
+    on(window, 'resize', function () {
+      window.clearTimeout(mt);
+      mt = window.setTimeout(measureBar, 150);
+    }, { passive: true });
+
     function paint(y) {
       var heroBottom = hero ? hero.offsetTop + hero.offsetHeight - 260 : CONFIG.breakpoints.stickyBar;
 
       if (bar) {
         var showBar = y > heroBottom;
-        if (showBar && bar.hidden) bar.hidden = false;
+        if (showBar && bar.hidden) { bar.hidden = false; measureBar(); }
         if (!showBar && !bar.hidden) bar.hidden = true;
         bar.classList.toggle('is-shown', showBar);
       }
       if (top) {
-        var showTop = y > CONFIG.breakpoints.backToTop;
+        // never let the back-to-top button appear before the sticky bar it sits above
+        var showTop = y > Math.max(CONFIG.breakpoints.backToTop, heroBottom);
         if (showTop && top.hidden) top.hidden = false;
         if (!showTop && !top.hidden) top.hidden = true;
         top.classList.toggle('is-shown', showTop);

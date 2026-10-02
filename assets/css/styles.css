@@ -1709,6 +1709,11 @@ section[id] { scroll-margin-top: 96px; }
   .review { flex-basis: 86vw; }
 }
 
+/* on mobile the sticky CTA bar owns the bottom-right corner */
+@media (max-width: 1023px) {
+  .totop { bottom: calc(var(--stickybar-h, 84px) + 22px); }
+}
+
 @media (min-width: 768px) {
   .pricerow { grid-template-columns: 1fr auto; padding: 22px 0; }
   .feat { grid-template-columns: 36px 54px 1fr; grid-template-areas: 'num icon body'; padding: 26px 0; gap: 0 16px; }
