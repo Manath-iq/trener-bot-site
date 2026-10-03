@@ -23,44 +23,44 @@
 /* ------------------------------------------------------------------ 1. TOKENS */
 :root {
   /* ink */
-  --ink:        #17121b;
-  --ink-2:      #201826;
-  --ink-3:      #2b2033;
+  --ink:        #0f0f0f;
+  --ink-2:      #1a1a1a;
+  --ink-3:      #262626;
 
   /* paper */
   --paper:      #ffffff;
-  --blush:      #fff5f9;
-  --blush-2:    #ffe7f1;
-  --blush-3:    #ffd4e5;
+  --blush:      #fdfbfb;
+  --blush-2:    #f8f5f5;
+  --blush-3:    #f3eeee;
 
   /* accent */
-  --pink:       #f0427f;
-  --pink-2:     #ff77a9;
-  --pink-3:     #ffa8c8;
-  --pink-deep:  #c62a63;
+  --pink:       #ff3b68;
+  --pink-2:     #ff6d8f;
+  --pink-3:     #ff9db3;
+  --pink-deep:  #d61e4a;
   --peach:      #ffb191;
 
   /* neutrals */
-  --muted:      #6f5f6b;
-  --muted-2:    #9c8a95;
+  --muted:      #5e545b;
+  --muted-2:    #8b7f88;
 
   /* geometry */
-  --r-xl:       34px;
-  --r-lg:       26px;
-  --r-md:       18px;
-  --r-sm:       12px;
+  --r-xl:       24px;
+  --r-lg:       18px;
+  --r-md:       12px;
+  --r-sm:       8px;
   --r-pill:     999px;
 
   /* rhythm */
   --shell:      1240px;
   --gut:        clamp(16px, 4.2vw, 40px);
-  --sec-y:      clamp(64px, 10vw, 132px);
+  --sec-y:      clamp(80px, 12vw, 160px);
 
   /* elevation — tinted to the plum base, never neutral grey */
-  --sh-1:       0 2px 6px -2px rgba(23, 18, 27, .16);
-  --sh-2:       0 18px 40px -22px rgba(23, 18, 27, .38);
-  --sh-3:       0 40px 80px -40px rgba(23, 18, 27, .55);
-  --sh-pink:    0 24px 50px -24px rgba(240, 66, 127, .55);
+  --sh-1:       0 2px 6px -2px rgba(15, 15, 15, .16);
+  --sh-2:       0 18px 40px -22px rgba(15, 15, 15, .38);
+  --sh-3:       0 40px 80px -40px rgba(15, 15, 15, .55);
+  --sh-pink:    0 16px 30px -14px rgba(214, 30, 74, .45);
 
   /* motion */
   --ease:       cubic-bezier(.16, 1, .3, 1);
@@ -72,12 +72,12 @@
 
   /* section-scoped (dark is the default theme) */
   --fg:         #ffffff;
-  --fg-2:       rgba(255, 255, 255, .64);
-  --fg-3:       rgba(255, 255, 255, .38);
+  --fg-2:       rgba(255, 255, 255, .7);
+  --fg-3:       rgba(255, 255, 255, .4);
   --line:       rgba(255, 255, 255, .12);
-  --line-2:     rgba(255, 255, 255, .07);
-  --surface:    rgba(255, 255, 255, .045);
-  --surface-2:  rgba(255, 255, 255, .085);
+  --line-2:     rgba(255, 255, 255, .08);
+  --surface:    rgba(255, 255, 255, .04);
+  --surface-2:  rgba(255, 255, 255, .07);
 }
 
 /* ------------------------------------------------------------ 2. RESET & BASE */
@@ -95,7 +95,7 @@ body {
   font-family: var(--font-b);
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.62;
+  line-height: 1.6;
   color: var(--fg);
   background: var(--ink);
   min-height: 100dvh;
