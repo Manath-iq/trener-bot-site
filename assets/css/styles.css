@@ -1304,28 +1304,28 @@ section[id] { scroll-margin-top: 96px; }
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 20px 0;
+  gap: 24px;
+  padding: 24px 0;
   text-align: left;
-  font-family: var(--font-b);
-  font-size: clamp(15px, 4.3vw, 17.5px);
-  font-weight: 700;
-  letter-spacing: -.01em;
+  font-family: var(--font-d);
+  font-size: clamp(16px, 2.2vw, 20px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--fg);
   transition: color .28s var(--ease);
 }
 .faq__q span:first-child { flex: 1; }
-.faq__q:hover { color: var(--pink-deep); }
+.faq__q:hover { color: var(--pink); }
 .faq__sign {
   width: 38px;
   height: 38px;
   flex: none;
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  border: 1.3px solid var(--line);
-  color: var(--pink-deep);
-  background: rgba(255, 255, 255, .6);
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  color: var(--pink);
+  background: var(--surface);
   transition: transform .45s var(--ease), background-color .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
 }
 .faq__sign .ic { width: 17px; height: 17px; stroke-width: 2; }
@@ -1339,13 +1339,14 @@ section[id] { scroll-margin-top: 96px; }
 .faq__item.is-open .faq__a { grid-template-rows: 1fr; }
 .faq__a-inner { overflow: hidden; }
 .faq__a-inner p {
-  padding-bottom: 14px;
+  padding-bottom: 20px;
   max-width: 66ch;
-  font-size: 14.5px;
+  font-size: 15px;
+  line-height: 1.6;
   color: var(--fg-2);
 }
 .faq__a-inner p:first-child { padding-top: 2px; }
-.faq__item.is-open .faq__a-inner { padding-bottom: 8px; }
+.faq__item.is-open .faq__a-inner { padding-bottom: 12px; }
 
 /* ------------------------------------------------- 13. CONTACT + FOOTER */
 .contact {
