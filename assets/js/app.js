@@ -2,9 +2,9 @@
    Дарья Ситдикова — trener-bot-site
    Vanilla interaction layer. No dependencies, no build step.
    --------------------------------------------------------------------------
-   Modules: config, utils, media-slots, marquee, reveal, parallax, tilt,
-   magnetic, nav, burger, progress, pricing, reviews, faq, ring, modal+form,
-   sticky bar, back-to-top, misc.
+   Modules: config, utils, media-slots, reveal, parallax, magnetic, nav,
+   burger, progress, pricing, reviews, faq, modal+form, sticky bar,
+   back-to-top, misc.
    ========================================================================== */
 (function () {
   'use strict';
@@ -117,30 +117,6 @@
     }
   }
 
-  /* ------------------------------------------------------------ MARQUEE */
-  function initMarquee() {
-    var track = $('[data-marquee]');
-    if (!track || reduced.matches) return;
-
-    var seed = track.innerHTML;
-    function fill() {
-      track.innerHTML = seed;
-      var base = track.scrollWidth;
-      if (!base) return;
-      var copies = Math.max(1, Math.ceil((window.innerWidth * 2) / base));
-      var out = seed;
-      for (var i = 0; i < copies; i++) out += seed;
-      track.innerHTML = out;
-    }
-    fill();
-
-    var t;
-    on(window, 'resize', function () {
-      window.clearTimeout(t);
-      t = window.setTimeout(fill, 220);
-    }, { passive: true });
-  }
-
   /* ------------------------------------------------------------- REVEAL */
   function initReveal() {
     var items = $$('[data-reveal]');
@@ -184,35 +160,6 @@
 
     onScroll(frame);
     window.requestAnimationFrame(frame);
-  }
-
-  /* --------------------------------------------------------------- TILT */
-  function initTilt() {
-    if (!finePointer.matches || reduced.matches) return;
-
-    $$('[data-tilt]').forEach(function (el) {
-      var raf = null, tx = 0, ty = 0;
-
-      function apply() {
-        el.style.setProperty('--tx', tx.toFixed(2) + 'deg');
-        el.style.setProperty('--ty', ty.toFixed(2) + 'deg');
-        raf = null;
-      }
-
-      on(el, 'pointermove', function (e) {
-        var r = el.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        tx = clamped(-py * 11, -11, 11);
-        ty = clamped(px * 13, -13, 13);
-        if (!raf) raf = window.requestAnimationFrame(apply);
-      });
-
-      on(el, 'pointerleave', function () {
-        tx = 0; ty = 0;
-        if (!raf) raf = window.requestAnimationFrame(apply);
-      });
-    });
   }
 
   /* ----------------------------------------------------------- MAGNETIC */
@@ -422,27 +369,6 @@
         btn.setAttribute('aria-expanded', String(open));
       });
     });
-  }
-
-  /* --------------------------------------------------------------- RING */
-  function initRing() {
-    var ring = $('[data-ring]');
-    if (!ring) return;
-    var total = 2 * Math.PI * 52;
-    ring.style.strokeDasharray = total.toFixed(1);
-
-    if (!('IntersectionObserver' in window)) {
-      ring.style.strokeDashoffset = (total * 0.13).toFixed(1);
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        ring.style.strokeDashoffset = (total * 0.13).toFixed(1);
-        io.disconnect();
-      });
-    }, { threshold: 0.4 });
-    io.observe(ring);
   }
 
   /* ------------------------------------------------------- MODAL + FORM */
@@ -689,17 +615,14 @@
   /* ---------------------------------------------------------------- BOOT */
   function boot() {
     initMediaSlots();
-    initMarquee();
     initReveal();
     initParallax();
-    initTilt();
     initMagnetic();
     initNav();
     initProgress();
     initPricing();
     initReviews();
     initFaq();
-    initRing();
     initModal();
     initFloaters();
     initMisc();
