@@ -23,7 +23,7 @@
 <link rel="preload" href="assets/fonts/manrope-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/hero-bg.webp" as="image">
 <link rel="stylesheet" href="assets/fonts/fonts.css?v=2">
-<link rel="stylesheet" href="assets/css/styles.css?v=2">
+<link rel="stylesheet" href="assets/css/styles.css?v=4">
 <noscript><style>.cutout__img{opacity:1}.rv{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
@@ -70,6 +70,7 @@
     <nav class="nav__links" aria-label="Основная навигация">
       <a href="#formats">Цены</a>
       <a href="#work">Подход</a>
+      <a href="#gym">В зале</a>
       <a href="#reviews">Отзывы</a>
       <a href="#faq">Вопросы</a>
       <a href="#contact">Контакты</a>
@@ -89,6 +90,7 @@
   <div class="nav__panel" data-nav-panel hidden>
     <a href="#formats">Варианты тренировок</a>
     <a href="#work">Работа со мной</a>
+    <a href="#gym">В зале</a>
     <a href="#reviews">Отзывы</a>
     <a href="#faq">Частые вопросы</a>
     <a href="#contact">На связи</a>
@@ -133,7 +135,7 @@
       </svg>
 
       <figure class="cutout cutout--hero" data-cutout>
-        <img class="cutout__img" src="assets/img/daria-hero.png" alt="Дарья Ситдикова, персональный фитнес-тренер" width="1024" height="1536" fetchpriority="high">
+        <img class="cutout__img" src="assets/img/daria-hero.webp?v=2" alt="Дарья Ситдикова, персональный фитнес-тренер" width="1024" height="1813" fetchpriority="high">
       </figure>
 
       <span class="hero__sign script" aria-hidden="true">Дарья<br> Ситдикова</span>
@@ -301,7 +303,7 @@
 
     <div class="work rv" data-reveal style="--i:1">
       <div class="work__photo" aria-hidden="true">
-        <img src="assets/img/daria-duo.webp" alt="" width="1086" height="1448" loading="lazy">
+        <img src="assets/img/daria-duo.webp?v=2" alt="" width="1086" height="1647" loading="lazy">
       </div>
 
       <span class="script work__s work__s--1" aria-hidden="true">с заботой</span>
@@ -329,6 +331,54 @@
         <h3>Контроль прогресса</h3>
         <p>Каждые 4 недели — замеры, фото и разбор. План меняется вместе с вами, а не лежит мёртвым грузом.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IN THE GYM ============ -->
+<section class="sec" id="gym">
+  <div class="shell">
+    <header class="gymhead">
+      <span class="script gymhead__pre rv" data-reveal>как это выглядит</span>
+      <h2 class="display display--center rv" data-reveal style="--i:1">В зале</h2>
+      <p class="lead lead--center rv" data-reveal style="--i:2">
+        <span class="dots" aria-hidden="true"></span>
+        Настоящие кадры с тренировок, <b>никаких стоковых фото</b>. Так выглядит обычное занятие со мной.
+      </p>
+    </header>
+
+    <div class="gym">
+      <figure class="gym__item gym__item--tall rv" data-reveal style="--i:1; --pos: 50% 60%">
+        <img src="assets/img/gym-squat.webp" alt="Дарья приседает со штангой в силовой раме" width="900" height="1350" loading="lazy">
+        <figcaption>Ставлю технику с нуля</figcaption>
+      </figure>
+      <figure class="gym__item rv" data-reveal style="--i:2; --pos: 60% 40%">
+        <img src="assets/img/gym-coach.webp" alt="Дарья берёт гриф, рядом страхующий" width="900" height="1350" loading="lazy">
+        <figcaption>Страхую на каждом подходе</figcaption>
+      </figure>
+      <figure class="gym__item gym__item--tall rv" data-reveal style="--i:3; --pos: 40% 50%">
+        <img src="assets/img/gym-press.webp" alt="Дарья выжимает штангу над головой в выпаде" width="900" height="1350" loading="lazy">
+        <figcaption>Силовые без страха</figcaption>
+      </figure>
+      <figure class="gym__item rv" data-reveal style="--i:4; --pos: 50% 62%">
+        <img src="assets/img/gym-stretch.webp" alt="Дарья делает растяжку с поворотом корпуса на коврике" width="900" height="1350" loading="lazy">
+        <figcaption>Мобильность и растяжка</figcaption>
+      </figure>
+      <figure class="gym__item rv" data-reveal style="--i:5; --pos: 50% 55%">
+        <img src="assets/img/gym-goblet.webp" alt="Дарья делает гоблет-присед с гантелью" width="900" height="1350" loading="lazy">
+        <figcaption>Ноги и ягодицы</figcaption>
+      </figure>
+      <figure class="gym__item rv" data-reveal style="--i:6; --pos: 50% 65%">
+        <img src="assets/img/gym-kit.webp" alt="Гантели, гиря и блин на полу зала" width="900" height="1350" loading="lazy">
+        <figcaption>Веса подберу под вас</figcaption>
+      </figure>
+    </div>
+
+    <div class="gym__cta rv" data-reveal>
+      <button class="strip" type="button" data-open-modal data-preset="Пробная тренировка со скидкой 15%">
+        <span>Хочу на пробную тренировку −15%</span>
+        <svg class="ic" aria-hidden="true"><use href="#i-arrow-long"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -506,7 +556,7 @@
   <div class="contact__sparks" aria-hidden="true"></div>
   <div class="shell contact__inner">
     <span class="contact__ava rv" data-reveal>
-      <img src="assets/img/daria-avatar.png" alt="Дарья Ситдикова" width="400" height="400" loading="lazy" data-avatar>
+      <img src="assets/img/daria-avatar.webp" alt="Дарья Ситдикова" width="800" height="800" loading="lazy" data-avatar>
     </span>
 
     <h2 class="display display--center display--white rv" data-reveal style="--i:1">На связи</h2>

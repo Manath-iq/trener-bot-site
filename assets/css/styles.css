@@ -745,6 +745,65 @@ html[data-billing="pack"] .pricebox[data-mode="single"] { opacity: 0; transform:
 .wcard h3 { margin-top: 8px; font-size: 14px; font-weight: 800; line-height: 1.25; }
 .wcard p { margin-top: 6px; font-size: 12.5px; line-height: 1.45; color: rgba(255,255,255,.86); }
 
+/* ------------------------------------------------------------- 8b. IN THE GYM */
+.gymhead { text-align: center; }
+.gymhead__pre {
+  position: relative; z-index: 1;
+  display: inline-block;
+  margin-bottom: -.18em;
+  font-size: clamp(30px, 7vw, 52px);
+  color: var(--ink);
+  transform: rotate(-4deg);
+}
+.gymhead__pre.rv { transform: translateY(22px) rotate(-4deg); }
+.gymhead__pre.rv.is-in { transform: rotate(-4deg); }
+
+/* bento of real photos: tall frames span two rows, the rest fill in */
+.gym {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 168px;
+  grid-auto-flow: dense;
+  gap: 10px;
+  margin-top: 28px;
+}
+.gym__item {
+  position: relative;
+  margin: 0;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--blue-ink);
+  box-shadow: var(--sh-2);
+}
+.gym__item--tall { grid-row: span 2; }
+.gym__item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: var(--pos, 50% 50%);
+  transition: transform .8s var(--ease-out);
+}
+.gym__item::after { /* blue floor glow so captions always read */
+  content: ''; position: absolute; inset: 45% 0 0; z-index: 1;
+  background: linear-gradient(180deg, transparent, rgba(10,28,110,.7));
+  pointer-events: none;
+}
+.gym__item figcaption {
+  position: absolute; z-index: 2;
+  left: 10px; right: 10px; bottom: 10px;
+  color: #fff;
+  font-family: var(--font-c);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+@media (hover: hover) {
+  .gym__item:hover img { transform: scale(1.04); }
+}
+.gym__cta { display: flex; justify-content: center; margin-top: 24px; }
+
 /* --------------------------------------------------------------- 9. REVIEWS */
 #reviews { overflow: hidden; padding-bottom: 8px; }
 
@@ -1158,6 +1217,8 @@ html[data-billing="pack"] .pricebox[data-mode="single"] { opacity: 0; transform:
   .work__photo { height: 520px; margin: 0 -24px; }
   .work__s { font-size: 34px; }
   .work__s--1 { left: 40px; top: 50px; }
+
+  .gym { grid-auto-rows: 250px; gap: 14px; }
   .work__s--2 { right: 40px; top: 150px; font-size: 32px; }
   .work__s--3 { left: 40px; top: 380px; font-size: 44px; }
   .work__s--4 { right: 40px; top: 420px; font-size: 30px; }
@@ -1219,6 +1280,13 @@ html[data-billing="pack"] .pricebox[data-mode="single"] { opacity: 0; transform:
   .work__s--3 { left: 330px; top: 470px; font-size: 56px; }
   .work__s--4 { right: 372px; top: 548px; font-size: 40px; }
 
+  /* in the gym: 4-column bento, two rows */
+  .gym { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 290px; gap: 16px; margin-top: 40px; }
+  .gym__item { border-radius: var(--r-lg); }
+  .gym__item figcaption { left: 20px; right: 20px; bottom: 18px; font-size: 17px; }
+  .gym__cta { margin-top: 32px; }
+  .gym__cta .strip { min-height: 54px; padding: 0 24px; font-size: 16px; }
+
   /* reviews */
   .revhead__pre { margin-left: 4%; }
   .revhead__side { position: absolute; right: 0; bottom: calc(100% - 60px); margin: 0; }
@@ -1262,7 +1330,8 @@ html[data-billing="pack"] .pricebox[data-mode="single"] { opacity: 0; transform:
     height: auto;
     min-height: 760px;
   }
-  .cutout--hero { left: 0; right: 0; }
+  /* the photo is waist-up: drop it so the face only clips the foot of "ТРЕНЕР" */
+  .cutout--hero { left: 0; right: 0; top: 120px; bottom: -120px; }
   .hero__sign { left: auto; right: 64%; top: 19%; font-size: 60px; white-space: nowrap; transform: rotate(-7deg); }
   .hero__sign br { display: none; }
   .hero__handle { right: 18%; top: 54%; }
