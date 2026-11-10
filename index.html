@@ -1,20 +1,31 @@
 <!DOCTYPE html>
-<html lang="ru" data-billing="single">
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Дарья Ситдикова — персональный фитнес-тренер в Нижнекамске</title>
-<meta name="description" content="Персональные, сплит- и групповые тренировки в Нижнекамске и онлайн. Программа под ваш график, питание без жёстких диет, гарантия результата. Пробная тренировка −15%.">
-<meta name="theme-color" content="#ECEEF2">
+<title>Дарья — персональный фитнес-тренер в Нижнекамске</title>
+<meta name="description" content="Персональные, сплит- и групповые тренировки в Нижнекамске и онлайн. Программа под ваш график, питание без жёстких диет, контроль прогресса.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ECEEF2" media="(prefers-color-scheme: light)" data-theme-color="light">
+<meta name="theme-color" content="#0B0E17" media="(prefers-color-scheme: dark)" data-theme-color="dark">
+<script>
+  /* apply the saved theme before first paint to avoid a light flash */
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { /* storage blocked — follow the system theme */ }
+  })();
+</script>
 <meta name="format-detection" content="telephone=no">
 <link rel="canonical" href="https://manath-iq.github.io/trener-bot-site/">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:title" content="Дарья Ситдикова — персональный фитнес-тренер в Нижнекамске">
-<meta property="og:description" content="Тренировки в зале и онлайн, сплиты с партнёром, питание и техника. Тело мечты за 3 месяца — без надрыва и скучных упражнений.">
+<meta property="og:title" content="Дарья — персональный фитнес-тренер в Нижнекамске">
+<meta property="og:description" content="Тренировки в зале и онлайн, сплиты с партнёром, питание и техника. Работаем над телом вашей мечты — без надрыва и скучных упражнений.">
 <meta property="og:url" content="https://manath-iq.github.io/trener-bot-site/">
-<meta property="og:image" content="assets/img/og-cover.png">
+<meta property="og:image" content="https://manath-iq.github.io/trener-bot-site/assets/img/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -23,7 +34,7 @@
 <link rel="preload" href="assets/fonts/manrope-600-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/hero-bg.webp" as="image">
 <link rel="stylesheet" href="assets/fonts/fonts.css?v=2">
-<link rel="stylesheet" href="assets/css/styles.css?v=6">
+<link rel="stylesheet" href="assets/css/styles.css?v=9">
 <noscript><style>.cutout__img{opacity:1}.rv{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
@@ -33,7 +44,6 @@
   <defs>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
     <symbol id="i-arrow-long" viewBox="0 0 48 24"><path d="M2 12h42M37 5l7 7-7 7"/></symbol>
-    <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.9l6.1-.8z" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s6.5-5.6 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/></symbol>
@@ -51,6 +61,8 @@
     <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5v-1a2.5 2.5 0 0 0-2.5-2.5H7a2.5 2.5 0 0 0-2.5 2.5V13a2.5 2.5 0 0 0 2.5 2.5h1"/></symbol>
     <symbol id="i-tg" viewBox="0 0 24 24"><path d="M21.6 4.3 19 18.4c-.2.9-.7 1.1-1.5.7l-4.1-3-2 1.9c-.2.2-.4.4-.8.4l.3-4.2 7.7-7c.3-.3 0-.5-.5-.2L8.2 12.6l-4.1-1.3c-.9-.3-.9-.9.2-1.3L19.8 3c.8-.3 1.5.2 1.3 1.3z" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.9"/><circle cx="17.1" cy="6.9" r="1.15" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.6a9.3 9.3 0 0 0-7.9 14.2l-1.4 4.6 4.7-1.3A9.3 9.3 0 1 0 12 2.6zm5.1 13c-.2.6-1.2 1.2-1.7 1.3-.5.1-1 .1-1.7-.1a11.8 11.8 0 0 1-5.8-5.1c-.4-.7-.6-1.4-.5-2 0-.5.5-1.4 1-1.6.3-.1.7-.1.9.1l.8 1.4c.1.2.1.4 0 .6l-.4.5c-.1.2-.2.3 0 .6.4.7 1.4 1.7 2.2 2.1.3.1.4.1.6-.1l.5-.5c.2-.2.4-.2.6-.1l1.4.8c.2.2.3.5.2.8z" fill="currentColor" stroke="none"/></symbol>
   </defs>
 </svg>
@@ -62,8 +74,8 @@
 <!-- ============ NAV ============ -->
 <header class="nav" data-nav>
   <div class="shell nav__inner">
-    <a class="brand" href="#hero" aria-label="Дарья Ситдикова — на главную">
-      <span class="brand__text"><b>Дарья Ситдикова</b><i>фитнес-тренер · Нижнекамск</i></span>
+    <a class="brand" href="#hero" aria-label="Дарья — на главную">
+      <span class="brand__text"><b>Дарья</b><i>фитнес-тренер · Нижнекамск</i></span>
     </a>
 
     <nav class="nav__links" aria-label="Основная навигация">
@@ -76,6 +88,10 @@
     </nav>
 
     <div class="nav__side">
+      <button class="themebtn" type="button" data-theme-toggle aria-label="Тёмная тема" aria-pressed="false">
+        <svg class="ic themebtn__moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="ic themebtn__sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
       <button class="btn btn--primary btn--sm nav__cta" type="button" data-open-modal>
         <span>Записаться</span>
         <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>
@@ -93,6 +109,11 @@
     <a href="#reviews">Отзывы</a>
     <a href="#faq">Частые вопросы</a>
     <a href="#contact">На связи</a>
+    <button class="nav__theme" type="button" data-theme-toggle aria-pressed="false">
+      <svg class="ic themebtn__moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      <svg class="ic themebtn__sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      <span data-theme-label>Тёмная тема</span>
+    </button>
     <button class="btn btn--primary btn--wide" type="button" data-open-modal>
       <span>Записаться на тренировку</span>
       <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>
@@ -116,7 +137,7 @@
         </h1>
         <p class="hero__sub rv" data-reveal style="--i:2">
           <span class="dots" aria-hidden="true"></span>
-          Вместе создадим <b>тело вашей мечты</b> всего <b>за&nbsp;3&nbsp;месяца</b>
+          Вместе поработаем над <b>телом вашей мечты</b> в&nbsp;<b>комфортном темпе</b>
         </p>
       </div>
     </div>
@@ -134,15 +155,15 @@
       </svg>
 
       <figure class="cutout cutout--hero" data-cutout>
-        <img class="cutout__img" src="assets/img/daria-hero.webp?v=2" alt="Дарья Ситдикова, персональный фитнес-тренер" width="1024" height="1813" fetchpriority="high">
+        <img class="cutout__img" src="assets/img/daria-hero.webp?v=2" alt="Дарья, персональный фитнес-тренер" width="1024" height="1813" fetchpriority="high">
       </figure>
 
-      <span class="hero__sign script" aria-hidden="true">Дарья<br> Ситдикова</span>
-      <span class="hero__handle">@daria.fit_nk</span>
+      <span class="hero__sign script" aria-hidden="true">Дарья</span>
+      <span class="hero__handle">@iamddasha</span>
     </div>
 
     <div class="hero__card glass rv" data-reveal style="--i:3">
-      <p class="hero__kicker">Тренер, который доведёт вас до результата</p>
+      <p class="hero__kicker">Тренер, который поможет прийти к результату</p>
       <p class="hero__motto"><span>Эффективно</span><span class="amp script" aria-hidden="true">&amp;</span><span>легко</span></p>
 
       <ul class="perks">
@@ -152,7 +173,7 @@
         </li>
         <li class="perk">
           <span class="perk__ic"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg></span>
-          <p><b>Гарантия результата:</b> верну деньги, если за 3 месяца мы не придём к цели</p>
+          <p><b>Контроль прогресса:</b> фиксируем цель и каждые 4 недели смотрим, как вы к ней движетесь</p>
         </li>
         <li class="perk">
           <span class="perk__ic"><svg class="ic" aria-hidden="true"><use href="#i-dumbbell"/></svg></span>
@@ -161,8 +182,8 @@
       </ul>
 
       <div class="cta-row">
-        <button class="strip" type="button" data-open-modal data-preset="Пробная тренировка со скидкой 15%">
-          <span>Скидка 15% на первое занятие</span>
+        <button class="strip" type="button" data-open-modal data-preset="Пробная тренировка">
+          <span>Запишитесь на пробное занятие</span>
           <svg class="ic" aria-hidden="true"><use href="#i-arrow-long"/></svg>
         </button>
         <button class="badge" type="button" data-open-modal data-magnetic aria-label="Записаться на тренировку">
@@ -176,9 +197,9 @@
     </div>
 
     <dl class="hero__stats rv" data-reveal style="--i:4">
-      <div><dt>6 лет</dt><dd>в профессии</dd></div>
-      <div><dt>184+</dt><dd>клиента дошли до цели</dd></div>
-      <div><dt>4,9<svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></dt><dd>рейтинг · 76 отзывов</dd></div>
+      <div><dt>4 года</dt><dd>в профессии</dd></div>
+      <div><dt>1:1</dt><dd>внимание на каждом подходе</dd></div>
+      <div><dt>5,0<svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></dt><dd>рейтинг · 25 отзывов на <span class="ph">[площадка]</span></dd></div>
     </dl>
   </div>
 
@@ -194,14 +215,8 @@
       <h2 class="display display--center">Варианты<br>тренировок</h2>
       <p class="lead lead--center">
         <span class="dots" aria-hidden="true"></span>
-        Выбирайте удобный формат. <b>Чем больше занятий</b> в абонементе, <b>тем дешевле</b> каждое.
+        Выбирайте <b>удобный формат</b> — в зале или онлайн.
       </p>
-
-      <div class="billing" data-billing-switch role="radiogroup" aria-label="Тип оплаты">
-        <span class="billing__thumb" aria-hidden="true"></span>
-        <button type="button" role="radio" aria-checked="true" data-billing-btn="single">Разово</button>
-        <button type="button" role="radio" aria-checked="false" data-billing-btn="pack">Абонемент <em>до −28%</em></button>
-      </div>
 
       <div class="pricing">
         <div class="pricegroup">
@@ -209,31 +224,19 @@
           <ul class="pricelist">
             <li class="pricerow">
               <span class="pricerow__main"><b>Персональная тренировка</b><i>60 минут · разбор техники · дневник в Telegram</i></span>
-              <span class="pricerow__price">
-                <span class="pricebox" data-mode="single"><b>1 500 руб.</b><i>за занятие</i></span>
-                <span class="pricebox" data-mode="pack"><b>10 800 руб.</b><i>8 занятий · −10%</i></span>
-              </span>
+              <span class="pricerow__price"><span class="pricebox"><b>1 500</b><i>за занятие</i></span></span>
             </li>
             <li class="pricerow">
               <span class="pricerow__main"><b>Сплит со своим партнёром</b><i>приходите вдвоём — веселее и выгоднее</i></span>
-              <span class="pricerow__price">
-                <span class="pricebox" data-mode="single"><b>1 000 руб.</b><i>с человека</i></span>
-                <span class="pricebox" data-mode="pack"><b>7 200 руб.</b><i>8 занятий · −10%</i></span>
-              </span>
+              <span class="pricerow__price"><span class="pricebox"><b>1 000</b><i>с человека</i></span></span>
             </li>
             <li class="pricerow">
               <span class="pricerow__main"><b>Сплит с подбором партнёра</b><i>найду напарника под ваш темп</i></span>
-              <span class="pricerow__price">
-                <span class="pricebox" data-mode="single"><b>1 200 руб.</b><i>с человека</i></span>
-                <span class="pricebox" data-mode="pack"><b>8 600 руб.</b><i>8 занятий · −10%</i></span>
-              </span>
+              <span class="pricerow__price"><span class="pricebox"><b>1 200</b><i>с человека</i></span></span>
             </li>
             <li class="pricerow">
               <span class="pricerow__main"><b>Групповая тренировка</b><i>до 6 человек · драйв и командный дух</i></span>
-              <span class="pricerow__price">
-                <span class="pricebox" data-mode="single"><b>600 руб.</b><i>за занятие</i></span>
-                <span class="pricebox" data-mode="pack"><b>4 300 руб.</b><i>8 занятий · −10%</i></span>
-              </span>
+              <span class="pricerow__price"><span class="pricebox"><b>750</b><i>за занятие</i></span></span>
             </li>
           </ul>
         </div>
@@ -243,31 +246,19 @@
           <ul class="pricelist">
             <li class="pricerow">
               <span class="pricerow__main"><b>Онлайн-созвон</b><i>40 минут · точечный разбор техники</i></span>
-              <span class="pricerow__price">
-                <span class="pricebox" data-mode="single"><b>1 500 руб.</b><i>за созвон</i></span>
-                <span class="pricebox" data-mode="pack"><b>5 100 руб.</b><i>4 созвона · −15%</i></span>
-              </span>
+              <span class="pricerow__price"><span class="pricebox"><b>1 500</b><i>за созвон</i></span></span>
             </li>
             <li class="pricerow">
               <span class="pricerow__main"><b>План тренировок</b><i>программа на 4 недели · еженедельный контроль</i></span>
-              <span class="pricerow__price">
-                <span class="pricebox" data-mode="single"><b>2 900 руб.</b><i>4 недели</i></span>
-                <span class="pricebox" data-mode="pack"><b>7 400 руб.</b><i>12 недель · −15%</i></span>
-              </span>
+              <span class="pricerow__price"><span class="pricebox"><b>6 000</b><i>4 недели</i></span></span>
             </li>
             <li class="pricerow">
               <span class="pricerow__main"><b>Курс по питанию</b><i>6 модулей · КБЖУ без заморочек · список покупок</i></span>
-              <span class="pricerow__price">
-                <span class="pricebox" data-mode="single"><b>4 900 руб.</b><i>доступ навсегда</i></span>
-                <span class="pricebox" data-mode="pack"><b>4 100 руб.</b><i>с абонементом · −15%</i></span>
-              </span>
+              <span class="pricerow__price"><span class="pricebox"><b>690</b><i>доступ навсегда</i></span></span>
             </li>
             <li class="pricerow">
               <span class="pricerow__main"><b>Ведение питания</b><i>месяц личного сопровождения каждый день</i></span>
-              <span class="pricerow__price">
-                <span class="pricebox" data-mode="single"><b>6 500 руб.</b><i>за месяц</i></span>
-                <span class="pricebox" data-mode="pack"><b>16 600 руб.</b><i>3 месяца · −15%</i></span>
-              </span>
+              <span class="pricerow__price"><span class="pricebox"><b>6 500</b><i>за месяц</i></span></span>
             </li>
           </ul>
         </div>
@@ -275,12 +266,12 @@
 
       <p class="note">
         <span class="note__ic"><svg class="ic" aria-hidden="true"><use href="#i-info"/></svg></span>
-        Длительность одной тренировки — 1 час. Абонемент действует 3 месяца со дня первого занятия.
+        Длительность одной тренировки — 1 час.
       </p>
 
       <div class="cta-row cta-row--panel">
-        <button class="strip" type="button" data-open-modal data-preset="Пробная тренировка со скидкой 15%">
-          <span>Пробное занятие + тестирование −15%</span>
+        <button class="strip" type="button" data-open-modal data-preset="Пробная тренировка">
+          <span>Пробное занятие + тестирование</span>
           <svg class="ic" aria-hidden="true"><use href="#i-arrow-long"/></svg>
         </button>
         <button class="badge" type="button" data-open-modal data-magnetic aria-label="Записаться на тренировку">
@@ -302,7 +293,7 @@
 
     <div class="work rv" data-reveal style="--i:1">
       <div class="work__photo" aria-hidden="true">
-        <img src="assets/img/daria-duo.webp?v=2" alt="" width="1086" height="1647" loading="lazy">
+        <img src="assets/img/gym-press.webp" alt="" width="900" height="1350" loading="lazy">
       </div>
 
       <span class="script work__s work__s--1" aria-hidden="true">с заботой</span>
@@ -318,7 +309,7 @@
       <article class="wcard wcard--2">
         <span class="dots dots--light" aria-hidden="true"></span>
         <h3>Индивидуальный подход к каждому</h3>
-        <p>Учитываю цели, ограничения и особенности здоровья — грыжи, восстановление после родов, долгий перерыв.</p>
+        <p>Учитываю цели, ограничения и особенности здоровья — после долгого перерыва, после родов, при проблемах со спиной. При заболеваниях — только с разрешения вашего врача.</p>
       </article>
       <article class="wcard wcard--3">
         <span class="dots dots--light" aria-hidden="true"></span>
@@ -342,7 +333,7 @@
       <h2 class="display display--center rv" data-reveal style="--i:1">В зале</h2>
       <p class="lead lead--center rv" data-reveal style="--i:2">
         <span class="dots" aria-hidden="true"></span>
-        Настоящие кадры с тренировок, <b>никаких стоковых фото</b>. Так выглядит обычное занятие со мной.
+        Настоящие кадры с тренировок, <b>никаких стоковых фото</b>.
       </p>
     </header>
 
@@ -374,8 +365,8 @@
     </div>
 
     <div class="gym__cta rv" data-reveal>
-      <button class="strip" type="button" data-open-modal data-preset="Пробная тренировка со скидкой 15%">
-        <span>Хочу на пробную тренировку −15%</span>
+      <button class="strip" type="button" data-open-modal data-preset="Пробная тренировка">
+        <span>Хочу на пробную тренировку</span>
         <svg class="ic" aria-hidden="true"><use href="#i-arrow-long"/></svg>
       </button>
     </div>
@@ -389,7 +380,7 @@
       <span class="script revhead__pre rv" data-reveal>ваши</span>
       <h2 class="display display--huge revhead__title rv" data-reveal style="--i:1">отзывы</h2>
       <div class="revhead__side rv" data-reveal style="--i:2">
-        <span class="rating"><b>4,9</b><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><i>76 отзывов</i></span>
+        <span class="rating"><b>5,0</b><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><i>25 отзывов</i></span>
         <div class="rev-nav">
           <button class="round-btn round-btn--prev" type="button" data-rev-prev aria-label="Предыдущий отзыв">
             <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>
@@ -406,8 +397,8 @@
     <div class="reviews__track" data-rev-track tabindex="0" aria-label="Отзывы клиентов, листаются в сторону">
 
       <article class="review review--intro">
-        <p>Я с уважением отношусь к личным границам и никогда не прошу отзыв в обмен на скидку. Здесь — истории клиентов, которые сами захотели поделиться результатом. Спасибо им!</p>
-        <a class="review__more" href="https://t.me/daria_fit_nk" target="_blank" rel="noopener">
+        <p>Я с уважением отношусь к личным границам и никогда не прошу отзыв специально. Здесь — отзывы клиентов, которые сами захотели поделиться впечатлениями. Публикую только имена; тексты могут быть сокращены без искажения смысла. Результаты у всех индивидуальны. Спасибо им!</p>
+        <a class="review__more" href="https://t.me/iamddasha1" target="_blank" rel="noopener noreferrer">
           <span>Ещё больше — в моём Telegram</span>
           <svg class="ic" aria-hidden="true"><use href="#i-arrow-long"/></svg>
         </a>
@@ -415,51 +406,195 @@
 
       <article class="review">
         <div class="review__top">
-          <span class="review__ava" aria-hidden="true">РФ</span>
-          <div class="review__who"><b>Регина Ф.</b><i>5 месяцев · −11 кг</i></div>
+          <span class="review__ava" aria-hidden="true">Е</span>
+          <div class="review__who"><b>Елена</b><time datetime="2026-11-06">06.11.2026</time></div>
         </div>
-        <p>Пришла после вторых родов: спина, вес, одышка на лестнице. Начали с простого — никаких «умри, но сделай». Через месяц впервые за три года поднялась на пятый этаж без остановки. Сейчас минус 11 кг, и я тащу штангу с удовольствием.</p>
-        <span class="stars" aria-label="Оценка 5 из 5"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+        <p>Замечательный тренер, занимаюсь с ней третий месяц. Все доступно обьясняет. Показывает как правильно делать упражнения, видит ошибки и поправляет.</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
       </article>
 
       <article class="review">
         <div class="review__top">
-          <span class="review__ava" aria-hidden="true">АН</span>
-          <div class="review__who"><b>Айгуль Н.</b><i>год · присед 40 → 95 кг</i></div>
+          <span class="review__ava" aria-hidden="true">А</span>
+          <div class="review__who"><b>Альбина</b><time datetime="2026-10-16">16.10.2026</time></div>
         </div>
-        <p>До Дарьи трижды начинала «с понедельника» и трижды бросала. Здесь впервые почувствовала, что следят за результатом, а не за галочкой. Разбор техники по видео, задания на неделю, питание без запретов. Присед вырос с 40 до 95 кг за год.</p>
-        <span class="stars" aria-label="Оценка 5 из 5"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+        <p>Даша грамотный, душевный, общительный, добрый тренер. Умеет найти подход к любому человеку. Занимаемся с ней больше 1,5 лет. Благодаря ей, за это время ушли не только килограммы и сантиметры, но и пришла любовь к спорту, к себе. Умеет создать невероятную атмосферу на каждой тренировке, превращая тяжёлый труд в удовольствие! Супер тренер! Ценю, уважаю и люблю ❤️</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
       </article>
 
       <article class="review">
         <div class="review__top">
-          <span class="review__ava" aria-hidden="true">ИР</span>
-          <div class="review__who"><b>Ильдар Р.</b><i>8 месяцев · сплит с женой</i></div>
+          <span class="review__ava" aria-hidden="true">К</span>
+          <div class="review__who"><b>Кристина</b><time datetime="2026-09-16">16.09.2026</time></div>
         </div>
-        <p>Тренируемся с женой в сплите. Дарья подобрала нагрузку так, что тяжело обоим, но никому не обидно. Отдельное спасибо за честное «у тебя поехала техника» вместо поглаживания по голове.</p>
-        <span class="stars" aria-label="Оценка 5 из 5"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+        <p>Хожу на тренировки в Дарье уже месяц. За этот короткий промежуток уже увидела превосходные результаты в зеркале, прорисовался пресс, поднялась попа, стала более выносливой, когда поднимаюсь на работу не запыхаюсь. Дарья составила сбалансированный рацион питания. У меня появилась легкость в желудке и я сбросила пару лишних килограмм. Огромное спасибо! Буду продолжать тренироваться с Вами дальше! Чмок</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
       </article>
 
       <article class="review">
         <div class="review__top">
-          <span class="review__ava" aria-hidden="true">МК</span>
-          <div class="review__who"><b>Марина К.</b><i>онлайн · из Казани</i></div>
+          <span class="review__ava" aria-hidden="true">А</span>
+          <div class="review__who"><b>Анастасия</b><time datetime="2026-09-15">15.09.2026</time></div>
         </div>
-        <p>Занимаюсь онлайн: командировки, зал в другом городе. Созвоны, правки в плане, обратная связь по видео — ни разу не почувствовала, что занимаюсь «по интернету». План живой и меняется под мой график.</p>
-        <span class="stars" aria-label="Оценка 5 из 5"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+        <p>Знаю Дарью давно, занималась под ее руководством в другом клубе. Также вместе ездили на Гонку Героев, уже знакома с ней 6 лет. Дарья очень отзывчивый, добрый, мотивирующий тренер. Четко и понятно показывает и объясняет! Она подготовит вас и к соревнованиям, ГТО, а если вы новичок, то поставит технику и всему научит, а также составит план питания. Рекомендую!</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
       </article>
 
       <article class="review">
         <div class="review__top">
-          <span class="review__ava" aria-hidden="true">ГА</span>
-          <div class="review__who"><b>Гузель А.</b><i>7 месяцев · после операции</i></div>
+          <span class="review__ava" aria-hidden="true">Т</span>
+          <div class="review__who"><b>Татьяна</b><time datetime="2026-08-26">26.08.2026</time></div>
         </div>
-        <p>После операции на колене боялась любого зала. Дарья согласовала программу с моим врачом, первые полтора месяца — без осевых нагрузок. Колено не болит, а этой зимой я снова встала на лыжи.</p>
-        <span class="stars" aria-label="Оценка 5 из 5"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+        <p>Так как в зале начала заниматься впервые, то поняла, что мне нужен тренер. Моими критериями к тренеру были: тактичность, пунктуальность, ответственность, знание своего дела. Моими целями были: &quot;поставить&quot; технику, стать выносливее.<br>Я выбрала Дарью. И не ошиблась! С Дарьей очень комфортно, нет страха показаться глупой, задав, казалось бы, банальный вопрос - все объяснит. С упражнениями также. Всегда заинтересована в прогрессе, все тренировки фиксирует письменно.Спасибо за продуктивные тренировки</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">О</span>
+          <div class="review__who"><b>Ольга</b><time datetime="2026-07-10">10.07.2026</time></div>
+        </div>
+        <p>Дарья - супер тренер! Это человек душа 💫 Максимально ответственно подходит к делу. Я ходила к ней в мини группах, отличный подход, супер комфортно ⚡ Если еще не выбрали тренера, go к ней ✨</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">Г</span>
+          <div class="review__who"><b>Гульнара</b><time datetime="2026-07-09">09.07.2026</time></div>
+        </div>
+        <p>Дарья Руслановна— прекрасный тренер! 🌟 Очень внимательная, профессиональная и мотивирующая. Тренировки проходят комфортно, интересно и при этом эффективно. Всегда поддержит🫂, объяснит технику и подберёт нагрузку под возможности и цели. С ней действительно хочется заниматься и не пропускать тренировки💪.<br><br>Все супер, я очень довольна и с удовольствием рекомендую Дарью❤️ всем, кто ищет грамотного и приятного фитнес-тренера!</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">М</span>
+          <div class="review__who"><b>Мария</b><time datetime="2026-06-09">09.06.2026</time></div>
+        </div>
+        <p>Мне 75 лет.Начала заниматься с Дарьей стало чувствовать себя лучше.Хорошо находит со всеми общий язык.Я ходила с палками, а сейчас хожу без них.Спасибо Дарье Руслановне!</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">М</span>
+          <div class="review__who"><b>Мяу</b><time datetime="2026-03-24">24.03.2026</time></div>
+        </div>
+        <p>Дарья лучшая! Мне очень понравилось то, что она не даёт расслабиться когда казалось бы пропадают мотивация и силы, помогает добить подходы до конца, поддерживает, следит за правильностью выполнения упражнений, а так же с ней можно поговорить по душам между подходами🥰 Очень приятная девушка, советую 💘</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">И</span>
+          <div class="review__who"><b>Ирина</b><time datetime="2026-01-28">28.01.2026</time></div>
+        </div>
+        <p>Благодарю тренера Дарью за профессиональный подход к тренировкам и внимательное отношение к каждому клиенту! Особенно хочу отметить её умение грамотно составить программу тренировок с учётом индивидуальных особенностей и целей. Каждое занятие проходит максимально эффективно благодаря чёткой структуре и грамотной технике выполнения упражнений.<br>Дарья всегда следит за правильностью выполнения упражнений, корректирует ошибки и мотивирует на достижение новых результатов! От всей души рекомендую Дарью</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">Э</span>
+          <div class="review__who"><b>Эльвира</b><time datetime="2026-01-27">27.01.2026</time></div>
+        </div>
+        <p>В спорте новичок. В рандомный день решила, что хочу здоровое, подтянутое тело. Заниматься дома:лень, некогда,устала.Абонементы в зал ранее приобретала, но толком не ходила. Поняла, что без персонального тренера мне не обойтись. К Даше попала на Smart Start, где она быстро расположила к себе. Ее профессиональный подход и открытость-впечатлила.Она не только показывает упражнение, но и следит,чтоб работали именно нужные мышцы.Вот уже 3 месяца занимаюсь с Дашей и мой результат заметен окружающим.</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">Л</span>
+          <div class="review__who"><b>Лилия</b><time datetime="2025-12-28">28.12.2025</time></div>
+        </div>
+        <p>Если вам нужен тренер,то это к Дарье!Помогает готовиться к соревнованиям!</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">К</span>
+          <div class="review__who"><b>Ксения</b><time datetime="2025-12-01">01.12.2025</time></div>
+        </div>
+        <p>Дарья Руслановна отлично знает свое дело! Все тренировки составляются с конкретным подходом на запрос. Тренировки не похожи между собой, тем очень интересно заниматься. Учитывает состояние на момент тренировки). Всегда знает, как и чем замотивировать! После занятий уходишь заряженный. Я рада, что выбрала её в качестве личного тренера! Благодарю! ❤️</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">В</span>
+          <div class="review__who"><b>Вероника</b><time datetime="2025-10-22">22.10.2025</time></div>
+        </div>
+        <p>Дарья - профессионал в своём деле! Находит индивидуальный подход к каждому человеку, даёт больше уверенности в выполнении задач 👍🏻 За маленький срок , я чувствую, что мое тело становится на шаг к совершенству 😌 Тренировки с Дарьей проходят очень быстро и незаметно) Рекомендую 💪🏼</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">А</span>
+          <div class="review__who"><b>Аделина</b><time datetime="2025-09-22">22.09.2025</time></div>
+        </div>
+        <p>Дарья - шикарный и высококвалифицированный тренер. Я безумно переживала перед первой тренировкой, но мы с первых минут нашли общий язык и теперь я выхожу с каждой тренировки с огромным зарядом позитива. Однако, несмотря на хиханьки и хаханьки, она все равно считает каждое повторение и следит за техникой. В общем, ни на секунду не пожалеете, обратившись к ней. Дарья не даст опустить руки, даже если вам кажется, что гантели по 10 кг - приклеены 😇</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">Д</span>
+          <div class="review__who"><b>Диана</b><time datetime="2025-09-20">20.09.2025</time></div>
+        </div>
+        <p>Дарья - настоящий профессионал и очень приятный человек! Я занимаюсь с ней уже больше года и перешла вместе с ней из другого клуба. Даша добрая, внимательная и легко находит общий язык, поэтому тренировки всегда проходят в комфортной и дружелюбной атмосфере. Она грамотно разрабатывает индивидуальную программу, следит за прогрессом и мотивирует на новые цели. Благодаря её поддержке я стала сильнее, выносливее, а тело заметно подтянулось. Рекомендую всем!</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">А</span>
+          <div class="review__who"><b>Аделя</b><time datetime="2025-09-17">17.09.2025</time></div>
+        </div>
+        <p>Даша- это человек мотиватор ! Работали над моим телом в 2024 году в клубе Атом . У Даши эффективные тренировки как и кардио так и силовые , постановка правильной технике под контрольно . Ее отдача в работе заслуживает всех похвал , с ней можно достигать поставленных целей, не даст отпустить руки . Главное чтобы и у Вас было желание и стремление на улучшении тела , а Дарья в этом Вас поддержит .</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">А</span>
+          <div class="review__who"><b>Алия</b><time datetime="2025-08-22">22.08.2025</time></div>
+        </div>
+        <p>Даша- замечательный тренер, занимаюсь с ней уже около года, результат просто поражает, всего чего хотела, мы добились, теперь работаем над новыми целями. Она очень чуткая, заботится о тех, кого тренирует, всегда интересуется самочувствием как до/после тренировки, так и во время выполнения разных(кстати очень интересных) комплексов. Если только хотите начать тренироваться или уже тренировались, она- идеальный тренер! (также хочется добавить, что она всегда считает кол-во упражнений и поддерживает…</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">А</span>
+          <div class="review__who"><b>Айгуль</b><time datetime="2025-08-18">18.08.2025</time></div>
+        </div>
+        <p>Даша классная и добрая душа, но добрая в плане общения, во время тренировки все равно будет просить качественное выполнение, действительно, видит слабые места и помогает 🫶 Я очень хотела тренера, благодаря которому буду гореть желанием приходить, а не думать &quot;Блин, сегодня еще на тренировке помирать&quot;. Даша соответствует всем моим желаниям. Идеальная женщина 💋</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">А</span>
+          <div class="review__who"><b>Анастасия</b><time datetime="2025-07-23">23.07.2025</time></div>
+        </div>
+        <p>Отличный тренер! Занимаюсь с ней уже 3 месяц! Видно, что есть результат, а именно: подтянулись ягодицы, улучшилась выносливость и в принципе чувствую, что тело стало более подтянутое и красивое. Очень хорошо и понятно объясняет технику выполнения упражнений, а также следит за его выполнением. Мотивирует не сдаться, а идти дальше! Всем советую! Хочу также отметить: Дарья никогда не опаздывает(она практически живет в зале) и всегда правильно считает!)</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
+      </article>
+
+      <article class="review">
+        <div class="review__top">
+          <span class="review__ava" aria-hidden="true">О</span>
+          <div class="review__who"><b>Ольга</b><time datetime="2025-07-17">17.07.2025</time></div>
+        </div>
+        <p>Дарья — молодой тренер, полный энергии и амбиций. Ее подход к работе отличается свежестью идей и стремлением к постоянному развитию себя и своих подопечных. Она вдохновляет своей уверенностью и готовностью пробовать новые методы тренировки, что делает занятия интересными и продуктивными.❤️<br><br>Тренировки под руководством Дарьи проходят динамично и увлекательно. Она умеет создать комфортную атмосферу, мотивируя участников достигать поставленных целей. 🎯🎯🎯</p>
+        <span class="stars" role="img" aria-label="Оценка 5 из 5"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span>
       </article>
 
     </div>
-    <div class="reviews__dots" data-rev-dots role="tablist" aria-label="Навигация по отзывам"></div>
+    <div class="reviews__dots" data-rev-dots role="group" aria-label="Навигация по отзывам"></div>
   </div>
 </section>
 
@@ -504,7 +639,7 @@
           </button>
         </h3>
         <div class="faq__a"><div class="faq__a-inner">
-          <p>Обычно за 3 месяца клиенты уходят на 5–10 кг, подтягивают тело и забывают про боль в спине. Цель и срок фиксируем на первой встрече. Если вы выполняете план, а результата нет — верну деньги за абонемент.</p>
+          <p>Результат у каждого свой: он зависит от исходной формы, регулярности тренировок, питания, сна и здоровья. На первой встрече мы ставим реалистичную цель и срок, а дальше каждые 4 недели проверяем прогресс и корректируем план. Обещать конкретные килограммы я не буду — это было бы нечестно.</p>
         </div></div>
       </article>
 
@@ -537,6 +672,19 @@
       <article class="faq__item rv" data-reveal style="--i:5">
         <h3>
           <button class="faq__q" type="button" aria-expanded="false">
+            <span class="faq__text">У меня <b>есть проблемы со здоровьем</b> — можно?</span>
+            <span class="faq__hint" aria-hidden="true">нажмите, чтобы раскрыть</span>
+            <span class="faq__sign" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span>
+          </button>
+        </h3>
+        <div class="faq__a"><div class="faq__a-inner">
+          <p>Я фитнес-тренер, а не врач: не ставлю диагнозов и не лечу. Если у вас есть хронические заболевания, травмы, беременность или вы восстанавливаетесь после операции — сначала получите разрешение врача на занятия. О самочувствии рассказывайте мне перед каждой тренировкой, а при боли, головокружении или недомогании занятие сразу останавливаем.</p>
+        </div></div>
+      </article>
+
+      <article class="faq__item rv" data-reveal style="--i:6">
+        <h3>
+          <button class="faq__q" type="button" aria-expanded="false">
             <span class="faq__text">Что <b>взять с собой?</b></span>
             <span class="faq__hint" aria-hidden="true">нажмите, чтобы раскрыть</span>
             <span class="faq__sign" aria-hidden="true"><svg class="ic"><use href="#i-plus"/></svg></span>
@@ -555,37 +703,47 @@
   <div class="contact__sparks" aria-hidden="true"></div>
   <div class="shell contact__inner">
     <span class="contact__ava rv" data-reveal>
-      <img src="assets/img/daria-avatar.webp" alt="Дарья Ситдикова" width="800" height="800" loading="lazy" data-avatar>
+      <img src="assets/img/daria-avatar.webp" alt="Дарья" width="800" height="800" loading="lazy" data-avatar>
     </span>
 
     <h2 class="display display--center display--white rv" data-reveal style="--i:1">На связи</h2>
     <p class="contact__sub rv" data-reveal style="--i:2">Отвечаю лично, обычно в течение дня</p>
 
     <div class="contact__links rv" data-reveal style="--i:3">
-      <a class="contact__link" href="https://t.me/daria_fit_nk" target="_blank" rel="noopener">
+      <a class="contact__link" href="https://t.me/iamddasha1" target="_blank" rel="noopener noreferrer">
         <svg class="ic" aria-hidden="true"><use href="#i-tg"/></svg><span>Телеграм</span>
       </a>
-      <a class="contact__link" href="https://wa.me/79172684103" target="_blank" rel="noopener">
+      <a class="contact__link" href="https://wa.me/79178510187" target="_blank" rel="noopener noreferrer">
         <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span>
       </a>
-      <a class="contact__link" href="https://instagram.com/daria.fit_nk" target="_blank" rel="noopener">
-        <svg class="ic" aria-hidden="true"><use href="#i-ig"/></svg><span>Инстаграм</span>
+      <a class="contact__link" href="https://www.instagram.com/iamddasha/" target="_blank" rel="noopener noreferrer">
+        <svg class="ic" aria-hidden="true"><use href="#i-ig"/></svg><span>Инстаграм*</span>
       </a>
+      <small class="contact__note">* Meta — экстремистская организация, запрещена в РФ</small>
     </div>
 
     <ul class="contact__facts rv" data-reveal style="--i:4">
       <li><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Нижнекамск · зал и онлайн</li>
       <li><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>пн–сб, 07:00–21:00</li>
-      <li><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+79172684103">+7 917 268-41-03</a></li>
+      <li><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+79178510187">+7 917 851-01-87</a></li>
     </ul>
 
     <p class="contact__sign script rv" data-reveal style="--i:5">Хватай кроссовки, погнали на тренировку! :)</p>
   </div>
 
   <footer class="footer">
+    <div class="shell footer__legal">
+      <p>Информация на сайте носит справочный характер и не является публичной офертой (ст. 437 ГК РФ). Стоимость и условия занятий согласуются лично. Результаты тренировок индивидуальны и не гарантируются: они зависят от состояния здоровья, регулярности занятий, питания и образа жизни. Отзывы отражают личный опыт их авторов.</p>
+      <p>Тренировки и рекомендации по питанию не являются медицинской услугой. Перед началом занятий проконсультируйтесь с врачом. 16+</p>
+      <p>* Instagram принадлежит компании Meta Platforms Inc., деятельность которой признана экстремистской и запрещена на территории Российской Федерации.</p>
+    </div>
     <div class="shell footer__inner">
-      <span>© <span data-year>2026</span> Дарья Ситдикова · Нижнекамск</span>
-      <span>Самозанятая · реквизиты для оплаты пришлю в Telegram</span>
+      <span>© <span data-year>2026</span> Дарья · Нижнекамск · самозанятая (НПД), ИНН <span class="ph">[ИНН]</span></span>
+      <nav class="footer__docs" aria-label="Документы">
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <a href="consent.html">Согласие на обработку данных</a>
+        <a href="terms.html">Пользовательское соглашение</a>
+      </nav>
     </div>
   </footer>
 </section>
@@ -595,8 +753,8 @@
 <!-- ============ MOBILE STICKY CTA ============ -->
 <div class="stickybar" data-stickybar hidden>
   <div class="stickybar__text">
-    <b>Первое занятие −15%</b>
-    <i>1 275 руб. вместо 1 500</i>
+    <b>Пробная тренировка</b>
+    <i>Подберём формат под вас</i>
   </div>
   <button class="btn btn--primary btn--sm" type="button" data-open-modal>
     <span>Записаться</span>
@@ -629,13 +787,13 @@
 
         <div class="field">
           <label for="f-name">Как вас зовут</label>
-          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Например, Регина" required>
+          <input id="f-name" name="name" type="text" maxlength="60" autocomplete="name" placeholder="Например, Регина" required>
           <p class="field__error" data-error-for="name" hidden>Напишите имя — хотя бы одно слово.</p>
         </div>
 
         <div class="field">
           <label for="f-contact">Телефон или ник в Telegram</label>
-          <input id="f-contact" name="contact" type="text" autocomplete="tel" placeholder="+7 917 … или @nickname" required>
+          <input id="f-contact" name="contact" type="text" maxlength="80" autocomplete="tel" placeholder="+7 917 … или @nickname" required>
           <p class="field__error" data-error-for="contact" hidden>Оставьте телефон или ник — иначе не смогу ответить.</p>
         </div>
 
@@ -651,15 +809,24 @@
 
         <div class="field">
           <label for="f-goal">Цель <span class="field__opt">необязательно</span></label>
-          <textarea id="f-goal" name="goal" rows="3" placeholder="Похудеть на 8 кг к лету, убрать боль в спине, вернуться в форму после родов"></textarea>
+          <textarea id="f-goal" name="goal" rows="3" maxlength="600" placeholder="Похудеть к лету, подтянуть тело, стать выносливее" aria-describedby="f-goal-hint"></textarea>
+          <p class="field__hint" id="f-goal-hint">Не указывайте здесь сведения о здоровье — обсудим их лично на первой встрече.</p>
         </div>
 
+        <div class="field field--check">
+          <label class="check">
+            <input id="f-consent" name="consent" type="checkbox" required>
+            <span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a></span>
+          </label>
+          <p class="field__hint">Как обрабатываются данные — в <a href="privacy.html" target="_blank" rel="noopener">политике конфиденциальности</a>.</p>
+          <p class="field__error" data-error-for="consent" hidden>Без согласия я не смогу обработать заявку.</p>
+        </div>
         <button class="btn btn--primary btn--wide btn--lg" type="submit" data-submit>
           <span data-submit-label>Собрать заявку</span>
           <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg>
           <span class="btn__spinner" aria-hidden="true"></span>
         </button>
-        <p class="form__note">Нажимая кнопку, вы соглашаетесь на обработку данных для ответа на заявку.</p>
+        <p class="form__note">Сайт не хранит и не пересылает ваши данные: заявка собирается в браузере, и вы сами отправляете её мне в мессенджер.</p>
       </form>
     </div>
 
@@ -669,7 +836,7 @@
       <p class="modal__sub">Текст скопирован в буфер обмена. Откройте Telegram — останется вставить его в чат и отправить.</p>
       <pre class="done__preview" data-preview></pre>
       <div class="done__actions">
-        <a class="btn btn--primary btn--lg" href="https://t.me/daria_fit_nk" target="_blank" rel="noopener" data-tg-open>
+        <a class="btn btn--primary btn--lg" href="https://t.me/iamddasha1" target="_blank" rel="noopener noreferrer" data-tg-open>
           <svg class="ic" aria-hidden="true"><use href="#i-tg"/></svg>
           <span>Открыть Telegram</span>
         </a>
@@ -687,6 +854,6 @@
   <svg class="ic" aria-hidden="true"><use href="#i-chevron"/></svg>
 </button>
 
-<script src="assets/js/app.js?v=2" defer></script>
+<script src="assets/js/app.js?v=4" defer></script>
 </body>
 </html>

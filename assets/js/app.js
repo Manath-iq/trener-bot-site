@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Дарья Ситдикова — trener-bot-site
+   Дарья — trener-bot-site
    Vanilla interaction layer. No dependencies, no build step.
    --------------------------------------------------------------------------
-   Modules: config, utils, media-slots, reveal, parallax, magnetic, nav,
-   burger, progress, pricing, reviews, faq, modal+form, sticky bar,
+   Modules: config, utils, theme, media-slots, reveal, parallax, magnetic,
+   nav, burger, progress, reviews, faq, modal+form, sticky bar,
    back-to-top, misc.
    ========================================================================== */
 (function () {
@@ -11,9 +11,9 @@
 
   /* ------------------------------------------------------------- CONFIG */
   var CONFIG = {
-    telegram: 'daria_fit_nk',
-    phone: '+79172684103',
-    price: { trial: '1 275 ₽', trialOld: '1 500 ₽' },
+    telegram: 'iamddasha1',
+    themeKey: 'theme',
+    themeColor: { light: '#ECEEF2', dark: '#0B0E17' },
     revealThreshold: 0.16,
     breakpoints: { navSolid: 40, stickyBar: 520, backToTop: 900 }
   };
@@ -71,23 +71,77 @@
     });
   }
 
+  /* -------------------------------------------------------------- THEME */
+  /* System theme by default; an explicit choice is saved and applied
+     before first paint by the inline script in <head>. */
+  var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function readStoredTheme() {
+    try {
+      var t = window.localStorage.getItem(CONFIG.themeKey);
+      return t === 'dark' || t === 'light' ? t : null;
+    } catch (e) { return null; }
+  }
+
+  function storeTheme(theme) {
+    try { window.localStorage.setItem(CONFIG.themeKey, theme); } catch (e) { /* storage blocked */ }
+  }
+
+  function explicitTheme() {
+    var attr = document.documentElement.getAttribute('data-theme');
+    return attr === 'dark' || attr === 'light' ? attr : readStoredTheme();
+  }
+
+  function currentTheme() {
+    return explicitTheme() || (darkQuery.matches ? 'dark' : 'light');
+  }
+
+  function initTheme() {
+    var root = document.documentElement;
+    var toggles = $$('[data-theme-toggle]');
+    var metas = $$('meta[data-theme-color]');
+
+    function paint() {
+      var stored = explicitTheme();
+      var theme = currentTheme();
+      var dark = theme === 'dark';
+
+      toggles.forEach(function (btn) { btn.setAttribute('aria-pressed', String(dark)); });
+
+      /* an explicit choice must win over the media-matched meta tags */
+      metas.forEach(function (m) {
+        var key = stored || m.getAttribute('data-theme-color');
+        m.setAttribute('content', CONFIG.themeColor[key]);
+      });
+    }
+
+    toggles.forEach(function (btn) {
+      on(btn, 'click', function () {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        storeTheme(next);
+        paint();
+      });
+    });
+
+    var onSystemChange = function () { if (!explicitTheme()) paint(); };
+    if (darkQuery.addEventListener) darkQuery.addEventListener('change', onSystemChange);
+    else if (darkQuery.addListener) darkQuery.addListener(onSystemChange);
+    paint();
+  }
+
   /* -------------------------------------------------------- MEDIA SLOTS */
   /* Every image is a slot: if the file is missing we keep the designed
      placeholder instead of showing a broken icon. Drop the real PNG into
      assets/img/ and it appears on the next load. */
   function initMediaSlots() {
-    var missing = [];
-
     $$('[data-cutout] img').forEach(function (img) {
       var host = img.closest('[data-cutout]');
       var ready = function () {
         host.classList.add('is-ready');
         host.classList.remove('is-missing');
       };
-      var failed = function () {
-        host.classList.add('is-missing');
-        missing.push(img.getAttribute('src'));
-      };
+      var failed = function () { host.classList.add('is-missing'); };
       if (img.complete) {
         if (img.naturalWidth > 0) ready(); else failed();
       } else {
@@ -99,22 +153,12 @@
     $$('[data-avatar]').forEach(function (img) {
       var host = img.closest('.contact__ava');
       var ready = function () { host.classList.add('is-ready'); };
-      var failed = function () { missing.push(img.getAttribute('src')); };
       if (img.complete) {
-        if (img.naturalWidth > 0) ready(); else failed();
+        if (img.naturalWidth > 0) ready();
       } else {
         on(img, 'load', ready, { once: true });
-        on(img, 'error', failed, { once: true });
       }
     });
-
-    if (missing.length) {
-      console.info(
-        '[trener-bot-site] Слотов без картинок: ' + missing.length + '\n' +
-        missing.map(function (s) { return '  · ' + s; }).join('\n') +
-        '\nПромты для генерации — в README.md, раздел «Картинки».'
-      );
-    }
   }
 
   /* ------------------------------------------------------------- REVEAL */
@@ -218,7 +262,7 @@
     on(burger, 'click', function () { setMenu(!open); });
     $$('a', panel).forEach(function (a) { on(a, 'click', function () { setMenu(false); }); });
     on(document, 'keydown', function (e) { if (e.key === 'Escape' && open) setMenu(false); });
-    window.addEventListener('resize', function () {
+    on(window, 'resize', function () {
       if (open && window.innerWidth >= 1024) setMenu(false);
     }, { passive: true });
   }
@@ -232,35 +276,6 @@
       var p = max > 0 ? clamped(window.scrollY / max, 0, 1) : 0;
       bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
     });
-  }
-
-  /* ------------------------------------------------------------ PRICING */
-  function initPricing() {
-    var wrap = $('[data-billing-switch]');
-    if (!wrap) return;
-    var buttons = $$('[data-billing-btn]', wrap);
-
-    function setMode(mode) {
-      document.documentElement.setAttribute('data-billing', mode);
-      wrap.setAttribute('data-active', mode);
-      buttons.forEach(function (b) {
-        b.setAttribute('aria-checked', String(b.getAttribute('data-billing-btn') === mode));
-      });
-    }
-
-    buttons.forEach(function (b) {
-      on(b, 'click', function () { setMode(b.getAttribute('data-billing-btn')); });
-      on(b, 'keydown', function (e) {
-        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-        e.preventDefault();
-        var next = b.getAttribute('data-billing-btn') === 'single' ? 'pack' : 'single';
-        setMode(next);
-        var target = buttons.filter(function (x) { return x.getAttribute('data-billing-btn') === next; })[0];
-        if (target) target.focus();
-      });
-    });
-
-    setMode('single');
   }
 
   /* ------------------------------------------------------------ REVIEWS */
@@ -281,7 +296,6 @@
       cards.forEach(function (card, i) {
         var b = document.createElement('button');
         b.type = 'button';
-        b.setAttribute('role', 'tab');
         b.setAttribute('aria-label', 'Отзыв ' + (i + 1) + ' из ' + cards.length);
         on(b, 'click', function () { scrollToCard(i); });
         dotsBox.appendChild(b);
@@ -312,15 +326,16 @@
       var i = activeIndex();
       dots.forEach(function (d, di) {
         d.classList.toggle('is-active', di === i);
-        d.setAttribute('aria-selected', String(di === i));
+        if (di === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
       });
       if (prev) prev.disabled = track.scrollLeft <= 4;
       if (next) next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
     }
 
+    var syncTimer = null;
     on(track, 'scroll', function () {
-      window.clearTimeout(track._t);
-      track._t = window.setTimeout(sync, 60);
+      window.clearTimeout(syncTimer);
+      syncTimer = window.setTimeout(sync, 60);
     }, { passive: true });
 
     on(prev, 'click', function () { scrollToCard(activeIndex() - 1); });
@@ -351,9 +366,18 @@
       if (!down) return;
       down = false;
       track.classList.remove('is-dragging');
-      if (moved) scrollToCard(activeIndex());
+      if (moved) {
+        scrollToCard(activeIndex());
+        window.setTimeout(function () { moved = false; }, 0);
+      }
     });
-    on(track, 'click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+    /* swallow only the click that ends a drag, then let clicks through again */
+    on(track, 'click', function (e) {
+      if (!moved) return;
+      moved = false;
+      e.preventDefault();
+      e.stopPropagation();
+    }, true);
 
     sync();
     window.requestAnimationFrame(sync);
@@ -390,8 +414,17 @@
     var lastMessage = '';
 
     /* --- open / close --- */
+    function showFormStep() {
+      if (stepDone.hidden) return;
+      form.reset();
+      $$('#f-name, #f-contact, #f-consent', modal).forEach(function (input) { setError(input, false); });
+      stepDone.hidden = true;
+      stepForm.hidden = false;
+    }
+
     function openModal(preset) {
       lastFocus = document.activeElement;
+      showFormStep();
       modal.hidden = false;
       document.body.classList.add('is-locked');
       window.requestAnimationFrame(function () { modal.classList.add('is-open'); });
@@ -401,7 +434,7 @@
         if (goal && !goal.value) goal.value = preset;
       }
       window.setTimeout(function () {
-        var first = stepDone.hidden ? $('#f-name', modal) : tgOpen;
+        var first = $('#f-name', modal);
         if (first) first.focus();
       }, 90);
     }
@@ -458,8 +491,18 @@
       setError(contact, !contactOk);
       if (!contactOk) bad.push(contact);
 
+      var consent = $('#f-consent', modal);
+      if (consent) {
+        setError(consent, !consent.checked);
+        if (!consent.checked) bad.push(consent);
+      }
+
       return bad;
     }
+
+    on($('#f-consent', modal), 'change', function (e) {
+      if (e.target.checked) setError(e.target, false);
+    });
 
     $$('#f-name, #f-contact', modal).forEach(function (input) {
       on(input, 'input', function () { if (fieldOf(input).classList.contains('has-error')) setError(input, false); });
@@ -472,7 +515,7 @@
     });
 
     /* --- message --- */
-    function buildMessage(preset) {
+    function buildMessage() {
       var format = ($('input[name="format"]:checked', modal) || {}).value || 'Персональная тренировка';
       var name = $('#f-name', modal).value.trim();
       var contact = $('#f-contact', modal).value.trim();
@@ -501,13 +544,12 @@
         return;
       }
 
-      var preset = $('#f-goal', modal).value.trim();
       submit.classList.add('is-loading');
       submit.disabled = true;
       submitLabel.textContent = 'Собираю…';
 
       window.setTimeout(function () {
-        lastMessage = buildMessage(preset);
+        lastMessage = buildMessage();
 
         copyText(lastMessage).catch(function () { /* clipboard may be blocked — user can copy manually */ });
 
@@ -593,10 +635,6 @@
     var year = $('[data-year]');
     if (year) year.textContent = String(new Date().getFullYear());
 
-    $$('[data-call]').forEach(function (btn) {
-      on(btn, 'click', function () { window.location.href = 'tel:' + CONFIG.phone; });
-    });
-
     /* smooth anchor scrolling with the fixed header offset (fallback path) */
     $$('a[href^="#"]').forEach(function (a) {
       on(a, 'click', function (e) {
@@ -614,13 +652,13 @@
 
   /* ---------------------------------------------------------------- BOOT */
   function boot() {
+    initTheme();
     initMediaSlots();
     initReveal();
     initParallax();
     initMagnetic();
     initNav();
     initProgress();
-    initPricing();
     initReviews();
     initFaq();
     initModal();
